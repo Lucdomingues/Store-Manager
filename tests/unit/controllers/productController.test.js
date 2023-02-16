@@ -20,7 +20,7 @@ describe('Testa a unidade do controller de products', function () {
         .stub(productsServices, 'findAll')
         .resolves({ type: null, message: products });
 
-      await productsController.listPassengers(req, res);
+      await productsController.listProducts(req, res);
 
       expect(res.status).to.have.been.calledWith(200);
       expect(res.json).to.have.been.calledWith(products);
@@ -38,7 +38,7 @@ describe('Testa a unidade do controller de products', function () {
       .stub(productsServices, 'findById')
       .resolves({ type: null, message: products[0] });
 
-    await productsController.listPassengersId(req, res);
+    await productsController.listProductsId(req, res);
 
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(products[0]);

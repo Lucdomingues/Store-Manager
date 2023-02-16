@@ -3,7 +3,8 @@ const { productsController } = require('../controllers/index');
 
 const router = express.Router();
 
-router.get('/', productsController.listPassengers);
-router.get('/:id', productsController.listPassengersId);
+router.get('/', productsController.listProducts);
+router.get('/:id', productsController.listProductsId);
+router.post('/', productsController.insertProducts);
 
 module.exports = router;
