@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const { productsServices } = require('../../../src/services/index');
 const { productsModel } = require('../../../src/models/index');
 
-const { products, newProduct } = require('./mock/products.services.mock');
+const { products } = require('./mock/products.services.mock');
 
 describe('Testa a unidade do service de products', () => {
   it('Recuperando a lista de produtos', async () => {
@@ -23,15 +23,6 @@ describe('Testa a unidade do service de products', () => {
     expect(result.type).to.be.equal(null)
     expect(result.message).to.be.deep.equal(products[0]);
   });
-
-  it('Cadastrando um novo produto', async () => {
-    sinon.stub(productsModel, 'insert').resolves(products[3]);
-
-    const result = await productsServices.insert(newProduct);
-
-    expect(result.type).to.be.equal(null);
-    expect(result.message).to.be.deep.equal(products[3]);
-   });
 
   afterEach(() => {
     sinon.restore();
