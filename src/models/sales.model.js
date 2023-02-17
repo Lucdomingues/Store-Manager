@@ -1,12 +1,13 @@
 const camelize = require('camelize');
+const snakeize = require('snakeize');
 const connection = require('./connection');
 
 const findAll = async () => {
-  const [result] = await connection.execute(
+  const [resultSales] = await connection.execute(
     'SELECT * FROM StoreManager.sales;',
   );
 
-  return camelize(result);
+  return camelize(resultSales);
 };
 
 const insert = async (sales) => {   
@@ -18,13 +19,13 @@ const insert = async (sales) => {
   const { id } = listSales[listSales.length - 1];
 
   const sale = sales.map(async (element) => {
+    const columns = Object.keys(snakeize(element)).join(', ');
     const placeholders = Object.keys(element)
       .map((_key) => '?')
       .join(', ');
     
     const insertSale = await connection.execute(
-      `INSERT INTO StoreManager.sales_products 
-     (sale_id, product_id, quantity) VALUE (?, ${placeholders})`,
+      `INSERT INTO StoreManager.sales_products (sale_id, ${columns}) VALUE (?, ${placeholders})`,
       [id, ...Object.values(element)],
     );
     return insertSale;
