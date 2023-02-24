@@ -1,5 +1,5 @@
 const { productsModel } = require('../models/index');
-const schema = require('./validations/validationsInputs');
+const { validateProducts } = require('../middlewares/index');
 
 const findAll = async () => {
   const products = await productsModel.findAll();
@@ -15,7 +15,7 @@ const findById = async (id) => {
 
 const insert = async (newProduct) => {
   const { name } = newProduct;
-  const validateResultRequired = schema.validationName(name);
+  const validateResultRequired = validateProducts.validationName(name);
 
   if (validateResultRequired.type) return validateResultRequired;
 

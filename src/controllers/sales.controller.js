@@ -9,6 +9,15 @@ const listSales = async (_req, res) => {
   return res.status(200).json(message);
 };
 
+const listSalesId = async (req, res) => {
+  const { id } = req.params;
+  const { type, message } = await salesServices.findById(id);
+
+  if (type) return res.status(errorMap.mapError(type)).json({ message });
+
+  return res.status(200).json(message);
+};
+
 const insertSales = async (req, res) => {
   const sales = req.body;
 
@@ -21,5 +30,6 @@ const insertSales = async (req, res) => {
 
 module.exports = {
   listSales,
+  listSalesId,
   insertSales,
 };

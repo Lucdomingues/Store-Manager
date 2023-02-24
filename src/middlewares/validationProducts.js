@@ -5,7 +5,7 @@ const validationName = (name) => {
       type: 'UNPROCESSABLE_ENTITY',
       message: '"name" length must be at least 5 characters long',
     };
-  } 
+  }
 
   return { type: null, message: '' };
 };
