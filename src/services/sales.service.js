@@ -6,8 +6,8 @@ const findAll = async () => {
   return { type: null, message: sales };
 };
 
-const findById = async (id) => {
-  const saleId = await salesModel.findById(id);
+const findById = async (idSale) => {
+  const saleId = await salesModel.findById(idSale);
   if (saleId.length === 0) return { type: 'PRODUCT_NOT_FOUND', message: 'Sale not found' };
 
   return { type: null, message: saleId };
