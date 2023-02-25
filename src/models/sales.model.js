@@ -1,5 +1,5 @@
 const camelize = require('camelize');
-const connection = require('./connection');
+const connection = require('./db/connection');
 
 const findAll = async () => {
   const [resultSales] = await connection.execute(
