@@ -3,10 +3,11 @@ const connection = require('./connection');
 
 const findAll = async () => {
   const [resultSales] = await connection.execute(
-    `SELECT s.date, p.sale_id, p.product_id, p.quantity 
+    `SELECT  p.sale_id, s.date, p.product_id, p.quantity 
     FROM StoreManager.sales s
     INNER JOIN StoreManager.sales_products p
-    ON s.id = p.sale_id;`,
+    ON s.id = p.sale_id
+    ORDER BY p.sale_id, p.product_id ;`,
   );
 
   return camelize(resultSales);
