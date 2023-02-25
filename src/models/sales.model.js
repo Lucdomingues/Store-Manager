@@ -25,24 +25,24 @@ const findById = async (id) => {
   return camelize(result);
 };
 
-const insertSaleId = async () => {
-  const [{ insertId }] = await connection.execute(
-    'INSERT INTO StoreManager.sales (date) VALUE (NOW())',
-  );
-  return insertId;
- };
+// const insertSaleId = async () => {
+//   const [{ insertId }] = await connection.execute(
+//     'INSERT INTO StoreManager.sales (date) VALUE (NOW())',
+//   );
+//   return insertId;
+//  };
 
-const insertProduct = async (idSale, productId, quantity) => {
-    const [{ insertId }] = await connection.execute(
-     'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES (?, ?, ?)',
-      [idSale, productId, quantity],
-    );
-  console.log('test', insertId);
-};
+// const insertProduct = async (idSale, productId, quantity) => {
+//     const [{ insertId }] = await connection.execute(
+//      'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES (?, ?, ?)',
+//       [idSale, productId, quantity],
+//     );
+//   console.log('test', insertId);
+// };
 
 module.exports = {
   findAll,
   findById,
-  insertSaleId,
-  insertProduct,
+  // insertSaleId,
+  // insertProduct,
 };

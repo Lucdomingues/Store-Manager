@@ -44,32 +44,32 @@ describe('Testa a unidade do controller de sales', function () {
     expect(res.json).to.have.been.calledWith(saleId[0]);
   });
 
-  it('Cadastrando uma nova sale e recebendo status 201', async function () {
-    const res = {};
-    const req = {
-      body: [
-        {
-          "productId": 1,
-          "quantity": 1
-        },
-        {
-          "productId": 2,
-          "quantity": 5
-        }
-      ],
-    };
+  // it('Cadastrando uma nova sale e recebendo status 201', async function () {
+  //   const res = {};
+  //   const req = {
+  //     body: [
+  //       {
+  //         "productId": 1,
+  //         "quantity": 1
+  //       },
+  //       {
+  //         "productId": 2,
+  //         "quantity": 5
+  //       }
+  //     ],
+  //   };
 
-    res.status = sinon.stub().returns(res);
-    res.json = sinon.stub().returns();
-    sinon
-      .stub(salesServices, 'insert')
-      .resolves({ type: null, message: newSale });
+  //   res.status = sinon.stub().returns(res);
+  //   res.json = sinon.stub().returns();
+  //   sinon
+  //     .stub(salesServices, 'insert')
+  //     .resolves({ type: null, message: newSale });
 
-    await salesController.insertSales(req, res);
+  //   await salesController.insertSales(req, res);
 
-    expect(res.status).to.have.been.calledWith(201);
-    expect(res.json).to.have.been.calledWith(newSale);
-  });
+  //   expect(res.status).to.have.been.calledWith(201);
+  //   expect(res.json).to.have.been.calledWith(newSale);
+  // });
 
   afterEach(function () {
     sinon.restore();

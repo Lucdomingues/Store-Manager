@@ -18,18 +18,18 @@ const listSalesId = async (req, res) => {
   return res.status(200).json(message);
 };
 
-const insertSales = async (req, res) => {
-  const sales = req.body;
+// const insertSales = async (req, res) => {
+//   const sales = req.body;
 
-  const { type, message } = await salesServices.insert(sales);
+//   const { type, message } = await salesServices.insert(sales);
 
-  if (type) return res.status(errorMap.mapError(type)).json({ message });
+//   if (type) return res.status(errorMap.mapError(type)).json({ message });
 
-  return res.status(201).json(message);
-};
+//   return res.status(201).json(message);
+// };
 
 module.exports = {
   listSales,
   listSalesId,
-  insertSales,
+  // insertSales,
 };
