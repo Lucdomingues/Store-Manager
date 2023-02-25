@@ -25,10 +25,20 @@ const insertProducts = async (req, res) => {
   if (type) return res.status(errorMap.mapError(type)).json({ message });
 
   return res.status(201).json(message);
- };
+};
+ 
+const deleteProducts = async (req, res) => {
+  const { id } = req.params;
+  const { type, message } = await productsServices.delet(id);
+
+  if (type) return res.status(errorMap.mapError(type)).json({ message });
+
+  res.status(204).end();
+};
 
 module.exports = {
   listProducts,
   listProductsId,
   insertProducts,
+  deleteProducts,
 };

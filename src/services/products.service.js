@@ -24,10 +24,20 @@ const insert = async (newProduct) => {
   const ultimo = products[products.length - 1];
 
   return { type: null, message: ultimo };
- };
+};
+ 
+const delet = async (id) => {
+  const products = await productsModel.findById(id);
+  if (!products) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+
+  await productsModel.delet(id);
+
+  return { type: null, message: '' };
+};
  
 module.exports = {
   findAll,
   findById,
   insert,
+  delet,
 };

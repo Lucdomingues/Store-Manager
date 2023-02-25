@@ -21,8 +21,14 @@ const insert = (newProducts) => connection.execute(
   [newProducts.name],
 );
 
+const delet = (id) => connection.execute(
+  'DELETE FROM StoreManager.products WHERE id = ?',
+  [id],
+);
+
 module.exports = {
   findAll,
   findById,
   insert,
+  delet,
 };

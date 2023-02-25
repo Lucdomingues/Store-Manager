@@ -1,9 +1,10 @@
 const validationProductId = (sales) => {
   const validateProductId = sales.every((ele) => ele.productId);
-
-  if (!validateProductId) {
-    return { type: 'BAD_REQUEST', message: '"productId" is required' };
-  }
+  const productNotFound = sales.every((element) => (
+    element.productId !== undefined));
+  
+  if (!validateProductId) return { type: 'BAD_REQUEST', message: '"productId" is required' };
+  if (!productNotFound) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
 
   return { type: null, message: '' };
 };
