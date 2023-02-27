@@ -13,31 +13,31 @@ const findById = async (idSale) => {
   return { type: null, message: saleId };
 };
 
-// const insert = async (sales) => {
-//   const validateResultRequired = validateSales.validationProductId(sales);
-//   const validateResultQuantity = validateSales.validationQuantity(sales);
+const insert = async (sales) => {
+  // const validateResultQuantity = await validateSales.validationQuantity(sales);
+  // const validateResultRequired = await validateSales.validationProductId(sales);
   
-//   if (validateResultRequired.type) return validateResultRequired;
-//   if (validateResultQuantity.type) return validateResultQuantity;
+  // if (validateResultQuantity.type) return validateResultQuantity;
+  // if (validateResultRequired.type) return validateResultRequired;
 
-//   const newIdSale = await salesModel.insertSaleId();
+  const newIdSale = await salesModel.insertSaleId();
 
-//   await Promise.all(
-//     sales.map(async (element) => {
-//       await salesModel.insertProduct(newIdSale, element.productId, element.quantity);
-//     }),
-//   );
+  await Promise.all(
+    sales.map(async (element) => {
+      await salesModel.insertProduct(newIdSale, element.productId, element.quantity);
+    }),
+  );
 
-//   const sale = {
-//     id: newIdSale,
-//     itemsSold: sales,
-//   };
+  const sale = {
+    id: newIdSale,
+    itemsSold: sales,
+  };
   
-//   return { type: null, message: sale };
-// };
+  return { type: null, message: sale };
+};
 
 module.exports = {
   findAll,
   findById,
-  // insert,
+  insert,
 };
